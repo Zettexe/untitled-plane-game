@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Plane/Biplane.gd" type="Script" id=1]
+[ext_resource path="res://Plane/plane.obj" type="ArrayMesh" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.6
+height = 1.46299
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 4.705, 0.1, 0.76 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 3.95367, 0.1, 0.76 )
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.38
+height = 1.75
+
+[node name="Plane" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="Mesh_Pivot" type="Position3D" parent="."]
+
+[node name="plane" type="MeshInstance" parent="Mesh_Pivot"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Camera_Pivot")
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Camera_Pivot" type="Position3D" parent="."]
+
+[node name="SpringArm" type="SpringArm" parent="Camera_Pivot"]
+spring_length = 15.0
+
+[node name="Position" type="Position3D" parent="Camera_Pivot/SpringArm"]
+
+[node name="BodyCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0900198, 0.292902 )
+shape = SubResource( 1 )
+
+[node name="TailCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14949, 3.01951 )
+shape = SubResource( 1 )
+
+[node name="TopWingCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26728, -0.298873 )
+shape = SubResource( 2 )
+
+[node name="BottomWingCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277179, 0.169716 )
+shape = SubResource( 4 )
+
+[node name="WheelCollision" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1.34479, -0.613379 )
+shape = SubResource( 3 )
