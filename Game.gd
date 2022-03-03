@@ -69,7 +69,6 @@ func debug_init():
 			push_warning("Unable to display all levels: Too many levels")
 			break
 		
-		print(level_name)
 		levels[level_name] = load("res://Levels/%s/L_%s.tscn" % [level_name, level_name]).instance()
 		i += 1
 	
@@ -77,11 +76,10 @@ func debug_init():
 	
 	i = 0
 	for button in buttons_container.get_children():
-		button = button as Button
 		if i >= levels.size():
 			button.disabled = true
 			continue
-		print(i)
+		
 		button.text = levels.keys()[i]
 		button.connect("button_up", self, "level_init", [levels.values()[i]])
 		i += 1
@@ -113,8 +111,7 @@ func level_init(level):
 		var objects_node = StaticBody.new()
 		objects_node.name = "Objects"
 		
-		for _i in range(0, old_objects_node.get_child_count()):
-			var child: Spatial = old_objects_node.get_child(0)
+		for child in old_objects_node.get_children():
 			var collision_shape
 			
 			if child is CSGBox:
