@@ -15,13 +15,13 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="Container" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 16.0
-margin_top = -198.0
-margin_right = -16.0
-margin_bottom = 284.0
+anchor_left = 0.016
+anchor_top = 0.17
+anchor_right = 0.984
+anchor_bottom = 0.973
+margin_left = -0.384001
+margin_right = 0.383972
+margin_bottom = 0.199951
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,10 +199,14 @@ margin_right = 989.0
 margin_bottom = 482.0
 
 [node name="Label" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 1008.0
-margin_bottom = 84.0
+anchor_left = 0.016
+anchor_top = 0.027
+anchor_right = 0.984
+anchor_bottom = 0.145
+margin_left = -0.384001
+margin_top = -0.200001
+margin_right = 0.383972
+margin_bottom = -3.00001
 custom_fonts/font = SubResource( 1 )
 text = "Level Select"
 align = 1
