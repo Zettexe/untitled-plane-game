@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Plane/plane.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Debug/Prototype/Materials/Green/M_Green_02.tres" type="Material" id=2]
+[ext_resource path="res://Debug/Prototype/Materials/Dark/M_Dark_01.tres" type="Material" id=3]
+[ext_resource path="res://Debug/Prototype/Materials/Orange/M_Orange_13.tres" type="Material" id=4]
+[ext_resource path="res://Debug/Prototype/Materials/Purple/M_Purple_02.tres" type="Material" id=5]
 
 [node name="CityTest" type="Spatial"]
 
@@ -10,43 +13,95 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459327, 0 )
 
 [node name="CSGBox" type="CSGBox" parent="Objects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55.3545, 13.6122, 101.157 )
+use_collision = true
 width = 11.6869
 height = 31.1917
 depth = 16.6691
 
 [node name="CSGBox2" type="CSGBox" parent="Objects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4421, 19.4662, 29.6529 )
+use_collision = true
 width = 18.6935
 height = 56.4702
 depth = 18.7621
 
 [node name="floor" type="CSGBox" parent="Objects"]
 material_override = ExtResource( 2 )
+use_collision = true
 width = 5000.0
 height = 1.0
 depth = 5000.0
 
 [node name="CSGBox3" type="CSGBox" parent="Objects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 168.721, 43.7768, -27.8515 )
+use_collision = true
 width = 85.7163
 height = 135.898
 depth = 88.9408
+
+[node name="CSGBox" type="CSGCylinder" parent="Objects/CSGBox3"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 3.8147e-06, 0 )
+operation = 2
+radius = 15.184
+height = 120.658
+sides = 20
 
 [node name="CSGBox4" type="CSGBox" parent="Objects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -111.22, 43.7768, -27.8515 )
+use_collision = true
+width = 74.1338
+height = 135.898
+depth = 88.9408
+
+[node name="CSGBox6" type="CSGBox" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -111.22, 43.7768, 133.56 )
+use_collision = true
+width = 53.5988
+height = 135.898
+depth = 72.0031
+
+[node name="CSGBox7" type="CSGBox" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.966, 43.7768, 133.56 )
+use_collision = true
+width = 53.5988
+height = 135.898
+depth = 72.0031
+
+[node name="CSGBox5" type="CSGBox" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7337, 6.32341, -119.994 )
+material_override = ExtResource( 4 )
+use_collision = true
 width = 85.7163
 height = 135.898
 depth = 88.9408
 
-[node name="CSGBox5" type="CSGBox" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7337, 6.32341, -119.994 )
-width = 85.7163
+[node name="CSGBox8" type="CSGBox" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7337, 6.32341, 240.193 )
+material_override = ExtResource( 3 )
+use_collision = true
+width = 66.7079
 height = 135.898
+depth = 88.9408
+
+[node name="CSGBox9" type="CSGBox" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -221.003, 6.32341, 240.193 )
+use_collision = true
+width = 66.7079
+height = 271.52
+depth = 88.9408
+
+[node name="CSGBox10" type="CSGBox" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -221.003, 6.32341, 351.834 )
+use_collision = true
+width = 66.7079
+height = 271.52
 depth = 88.9408
 
 [node name="CSGSphere" type="CSGSphere" parent="Objects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78.6665, 64.0981, -37.6801 )
+material_override = ExtResource( 5 )
 operation = 2
+use_collision = true
 radius = 27.7267
 radial_segments = 22
 rings = 13
