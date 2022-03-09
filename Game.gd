@@ -104,44 +104,6 @@ func level_init(level):
 	add_child(biplane)
 	add_child(camera)
 	
-	# Generate level collision to aid level creation
-	var old_objects_node = level.get_node("Objects")
-	
-	if old_objects_node:
-		var objects_node = StaticBody.new()
-		objects_node.name = "Objects"
-		
-		for child in old_objects_node.get_children():
-			var collision_shape
-			
-			if child is CSGBox:
-				collision_shape = BoxShape.new()
-				collision_shape.extents = Vector3(child.width, child.height, child.depth) / 2
-			elif child is CSGCylinder:
-				collision_shape = CylinderShape.new()
-				collision_shape.radius = child.radius
-				collision_shape.height = child.height
-			elif child is CSGSphere:
-				collision_shape = SphereShape.new()
-				collision_shape.radius = child.radius
-			else: return
-			
-			var collision = CollisionShape.new()
-			collision.shape = collision_shape
-			collision.transform = child.transform
-			collision.name = child.name
-			
-			child.transform = objects_node.transform
-			
-			child.name = "MeshInstance"
-			
-			old_objects_node.remove_child(child)
-			collision.add_child(child)
-			objects_node.add_child(collision)
-		
-		level.remove_child(old_objects_node)
-		level.add_child(objects_node)
-	
 	# TODO: Add level changing system
 	add_child(level)
 	remove_child(level_select)
