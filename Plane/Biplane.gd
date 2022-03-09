@@ -17,7 +17,7 @@ export(float) var rotation_strength = 0.8
 # Gravity kicks in below this speed (interpolated)
 var min_flight_speed = 10
 # Turn speed in relation to how far rotated the plane is
-var turn_speed = 1
+var turn_speed = .5
 # Climb/dive rate
 var pitch_speed = 0.5
 # How fast the plane rotates
@@ -47,13 +47,6 @@ onready var _camera_position = $Camera_Pivot/SpringArm/Position as Position3D
 func _ready():
 	_camera_position.transform.origin.z = _spring_arm.spring_length
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	""" 
-	Remove godots shitty deadzone in favor of my own 
-	"""
-	InputMap.action_set_deadzone("move_right", 0)
-	InputMap.action_set_deadzone("move_left", 0)
-	InputMap.action_set_deadzone("move_forward", 0)
-	InputMap.action_set_deadzone("move_back", 0)
 
 #func _unhandled_input(event):
 #	var mouse_mode_captured = Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
