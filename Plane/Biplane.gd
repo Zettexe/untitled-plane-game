@@ -15,21 +15,21 @@ export(float) var rotation_strength = 0.8
 
 
 # Gravity kicks in below this speed (interpolated)
-var min_flight_speed = 10
+export(float) var min_flight_speed = 10
 # Turn speed in relation to how far rotated the plane is
-var turn_speed = .5
+export(float) var turn_speed = .5
 # Climb/dive rate
-var pitch_speed = 0.5
+export(float) var pitch_speed = 0.5
 # How fast the plane rotates
-var rotation_speed = 2
+export(float) var rotation_speed = 2
 # How fast the plane rotates while roll locked
-var lock_rotation_speed = 3
+export(float) var lock_rotation_speed = 3
 # Throttle change speed
-var throttle_delta = 30
+export(float) var throttle_delta = 30
 # Acceleration/deceleration
-var acceleration = 6.0
+export(float) var acceleration = 6.0
 # How far the plane is allowed to roll while roll locked
-var lock_max_rotation = 1.5
+export(float) var lock_max_rotation = 1.5
 
 # Current speed
 var forward_speed = 0
