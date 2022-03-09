@@ -20,6 +20,7 @@ height = 1.75
 [node name="Plane" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 1 )
+lock_max_rotation = 1.25
 
 [node name="Mesh_Pivot" type="Position3D" parent="."]
 
