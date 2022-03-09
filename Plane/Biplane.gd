@@ -113,7 +113,7 @@ func handle_movement(delta):
 		_mesh_pivot.rotation.z = lerp(_mesh_pivot.rotation.z, _mesh_pivot.rotation.z - input_vector.x, rotation_speed * abs(input_vector.x) * delta)
 	else:
 		# Turn
-		_mesh_pivot.rotation.z = lerp(_mesh_pivot.rotation.z, -input_vector.x, lock_rotation_speed * abs(input_vector.x) * delta)
+		_mesh_pivot.rotation.z = lerp(_mesh_pivot.rotation.z, -input_vector.x * lock_max_rotation, lock_rotation_speed * abs(input_vector.x) * delta)
 	
 	_mesh_pivot.transform.basis = _mesh_pivot.transform.basis.rotated(Vector3.UP, Vector3.UP.dot(_mesh_pivot.transform.basis.x) * turn_speed * delta)
 #	if action_strength:
