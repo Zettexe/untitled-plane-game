@@ -22,10 +22,14 @@ var turn_speed = .5
 var pitch_speed = 0.5
 # How fast the plane rotates
 var rotation_speed = 2
+# How fast the plane rotates while roll locked
+var lock_rotation_speed = 3
 # Throttle change speed
 var throttle_delta = 30
 # Acceleration/deceleration
 var acceleration = 6.0
+# How far the plane is allowed to roll while roll locked
+var lock_max_rotation = 1.5
 
 # Current speed
 var forward_speed = 0
@@ -101,13 +105,17 @@ func handle_movement(delta):
 	velocity = -_mesh_pivot.transform.basis.z * forward_speed
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
-	
+	# Up/Down
 	_mesh_pivot.transform.basis = _mesh_pivot.transform.basis.rotated(_mesh_pivot.transform.basis.x, input_vector.y * rotation_strength * delta)
 	
-	_mesh_pivot.rotation.z = lerp(_mesh_pivot.rotation.z, _mesh_pivot.rotation.z - input_vector.x, rotation_speed * abs(input_vector.x) * delta)
+	if Input.get_action_strength("unlock_roll") > 0:
+		# Roll
+		_mesh_pivot.rotation.z = lerp(_mesh_pivot.rotation.z, _mesh_pivot.rotation.z - input_vector.x, rotation_speed * abs(input_vector.x) * delta)
+	else:
+		# Turn
+		_mesh_pivot.rotation.z = lerp(_mesh_pivot.rotation.z, -input_vector.x, lock_rotation_speed * abs(input_vector.x) * delta)
+	
 	_mesh_pivot.transform.basis = _mesh_pivot.transform.basis.rotated(Vector3.UP, Vector3.UP.dot(_mesh_pivot.transform.basis.x) * turn_speed * delta)
-	
-	
 #	if action_strength:
 #		add_central_force(-get_global_transform().basis.z.normalized() * (action_strength * acceleration_speed * delta))
 
